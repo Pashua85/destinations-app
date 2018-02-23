@@ -38,6 +38,10 @@ class App extends React.Component {
     }
   };
 
+  reorderAddreses = (addresses) => {
+    this.setState(() => ({ addresses }));
+  };
+
   render() {
     return (
       <div>
@@ -49,7 +53,10 @@ class App extends React.Component {
               handleError={this.handleError}
             />
             <ErrorMessage errorMessage={this.state.errorMessage} />
-            <AddressList />
+            <AddressList 
+              handleReorder={this.reorderAddreses} 
+              addresses={this.state.addresses}
+            />
           </div>
           <MapContainer />
         </div>

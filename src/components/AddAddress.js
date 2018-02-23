@@ -21,7 +21,7 @@ export default class AddAddress extends React.Component {
         .then(results => {
           newAddress.address = results[0].formatted_address;
           newAddress.place_id = results[0].place_id;
-          console.log(results[0]);
+          newAddress.address_components = results[0].address_components;
           return getLatLng(results[0]);
         })
         .then(lanLng => {
@@ -48,6 +48,7 @@ export default class AddAddress extends React.Component {
       .then(results => {
         newAddress.address = results[0].formatted_address;
         newAddress.place_id = results[0].place_id;
+        newAddress.address_components = results[0].address_components;
         return getLatLng(results[0]);
       })
       .then(lanLng => {
