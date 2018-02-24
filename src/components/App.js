@@ -42,6 +42,12 @@ class App extends React.Component {
     this.setState(() => ({ addresses }));
   };
 
+  deleteAddress = (placeId) => {
+    this.setState(prevState => ({
+      addresses: prevState.addresses.filter(address => address.place_id !== placeId)
+    }))
+  }
+
   render() {
     return (
       <div>
@@ -56,6 +62,7 @@ class App extends React.Component {
             <AddressList 
               handleReorder={this.reorderAddreses} 
               addresses={this.state.addresses}
+              deleteAddress={this.deleteAddress}
             />
           </div>
           <MapContainer />
