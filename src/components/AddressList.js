@@ -6,7 +6,7 @@ export default class AddressList extends React.Component {
 
   itemClicked = (event, clickedItem, itemsIndex) => {
     if(event.target.closest('.remove-btn')) {
-      this.props.deleteAddress(clickedItem.place_id)
+      this.props.deleteAddress(clickedItem.placeId)
     }
   };
 
@@ -23,7 +23,7 @@ export default class AddressList extends React.Component {
 
     return (
       <Reorder
-        itemKey='place_id'
+        itemKey='placeId'
         lock='horizontal'
         holdTime='250'
         list={this.props.addresses}

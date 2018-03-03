@@ -16,25 +16,7 @@ export default class AddAddress extends React.Component {
     event.preventDefault();
     
     if(this.state.address) {
-      let newAddress = {};
-      geocodeByAddress(this.state.address)
-        .then(results => {
-          newAddress.address = results[0].formatted_address;
-          newAddress.place_id = results[0].place_id;
-          newAddress.address_components = results[0].address_components;
-          return getLatLng(results[0]);
-        })
-        .then(lanLng => {
-          newAddress.lanLng = lanLng;
-          console.log(newAddress);
-          this.props.addAddress(newAddress);
-          this.setState(() => ({ address: '' }))
-        })
-        .catch(error => {
-          console.log('Error', error);
-          this.setState(() => ({ address: ''}));
-          this.props.handleError('Не удалось полусить данные о точке')
-        })
+      this.handleSelect(this.state.address)
     } else {
       this.props.handleError('Введите название точки маршрута');
     }
@@ -47,13 +29,11 @@ export default class AddAddress extends React.Component {
     geocodeByAddress(address)
       .then(results => {
         newAddress.address = results[0].formatted_address;
-        newAddress.place_id = results[0].place_id;
-        newAddress.address_components = results[0].address_components;
+        newAddress.placeId = results[0].place_id;
         return getLatLng(results[0]);
       })
-      .then(lanLng => {
-        newAddress.lanLng = lanLng;
-        console.log(newAddress);
+      .then(latLng => {
+        newAddress.latLng = latLng;
         this.props.addAddress(newAddress);
         this.setState(() => ({ address: '' }))
       })
