@@ -59,12 +59,19 @@ class App extends React.Component {
       //   placeId: '"ChIJybDUc_xKtUYRTM9XV8zWRD0"'
       // }
     ],
-    errorMessage: ''
+    errorMessage: '',
+    pathCoords: []
   };
 
   handleError = (errorMessage) => {
     this.setState(() => ({ errorMessage }));
   };
+
+  setPathCoords = () => {
+    this.setState((prevState) => ({
+      pathCoords: prevState.addresses.map(address => address.latLng)
+    }))
+  }
 
   isUniqueAddress = (placeId) => {
     if(this.state.addresses.length > 0) {
@@ -84,6 +91,7 @@ class App extends React.Component {
           errorMessage: ''
         }
       ));
+      this.setPathCoords();
     } else {
       this.handleError('Эта точка уже есть в маршруте')
     }
@@ -91,13 +99,15 @@ class App extends React.Component {
 
   reorderAddreses = (addresses) => {
     this.setState(() => ({ addresses }));
+    this.setPathCoords();
   };
 
   deleteAddress = (placeId) => {
     console.log('hello')
     this.setState(prevState => ({
       addresses: prevState.addresses.filter(address => address.placeId !== placeId)
-    }))
+    }));
+    this.setPathCoords();
   };
 
   onChangePosition = (oldPlaceId, newLatLng ) => {
@@ -120,7 +130,8 @@ class App extends React.Component {
           }
           
         });
-        this.setState(() => ({ addresses: newAddresses }))
+        this.setState(() => ({ addresses: newAddresses }));
+        this.setPathCoords();
       })
       .catch(error => {
         console.log('Error', error);
@@ -147,6 +158,7 @@ class App extends React.Component {
           <MapComponent
             isMarkerShown addresses={this.state.addresses} 
             onChangePosition={this.onChangePosition}
+            pathCoords={this.state.pathCoords}
           />
         </div>
       </div>

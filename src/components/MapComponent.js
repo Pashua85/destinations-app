@@ -1,6 +1,6 @@
 import React from 'react';
 import { compose, withProps } from 'recompose';
-import { withScriptjs,
+import { 
   withGoogleMap, 
   GoogleMap, 
   Marker, 
@@ -13,26 +13,14 @@ class Map extends React.Component {
     super(props);
     this.state = {
       showInfoBox: false,
-      selectAddress: null, 
-      draggableItem: null
+      selectAddress: null    
     };
   };
 
-  componentDidMount() {
-    if(this.props.addresses.length) {
-      const bounds = new window.google.maps.LatLngBounds();
-      this.props.addresses.map((address, i) => {
-        bounds.extend(new window.google.maps.LatLng(
-          address.latLng.lat,
-          address.latLng.lng
-        ));
-      });
-      this.map.fitBounds(bounds);
-    }
-  };
-
   componentDidUpdate() {
-    if(this.props.addresses.length) {
+    console.log(this.state.pathCoords);
+    console.log(this.props.addresses);
+    if(this.props.addresses.length > 1) {
       const bounds = new window.google.maps.LatLngBounds();
       this.props.addresses.map((address, i) => {
         bounds.extend(new window.google.maps.LatLng(
@@ -57,28 +45,24 @@ class Map extends React.Component {
     }))
   };
 
-
-
-
-
   render() {    
-    const pathCoords = this.props.addresses.map(address => address.latLng);
-    let defaultCenter;
-    this.props.addresses ?
-      defaultCenter = {
-        lat: 56.80950300000001,
-        lng: 60.606506999999965
-      } :
-      defaultCenter = this.props.addresses[0].latLng;  
+    var center;
+    this.props.addresses.length ?
+    center = this.props.addresses[0].latLng :
+    center = {
+      lat: 56.80950300000001,
+      lng: 60.606506999999965
+    };
 
     return (
       <GoogleMap
         ref={ref => { this.map = ref;}}
         defaultZoom={12}  
-        defaultCenter={defaultCenter}
-      > { this.props.addresses &&
+        center={center}
+      > 
+        { this.props.addresses &&
         <Polyline
-          path={pathCoords}
+          path={this.props.pathCoords}
           options={{
             strokeColor: '#FF0000',
             strokeOpacity: 1.0
@@ -90,7 +74,7 @@ class Map extends React.Component {
           this.props.addresses.map((address, index) => {
             return (
               <Marker 
-                key={index}
+                key={address.placeId}
                 position={address.latLng} 
                 draggable={true}
                 onDragStart={this.onStartChangePosition}
@@ -116,12 +100,10 @@ class Map extends React.Component {
 
 const MyMapComponent = compose(
   withProps({
-    //googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyDtqFU3lz7jKSCxTj_qc7iNjvCadpmT5Ls&v=3.exp&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div style={{ height: `400px` }} />,
     mapElement: <div style={{ height: `100%` }} />,
   }),
-  //withScriptjs,
   withGoogleMap
 )(Map);
 
