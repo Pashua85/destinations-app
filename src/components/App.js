@@ -71,7 +71,35 @@ class App extends React.Component {
     this.setState((prevState) => ({
       pathCoords: prevState.addresses.map(address => address.latLng)
     }))
-  }
+  };
+
+  areAllBuildingsInRussia = (addresses) => {
+    const index = addresses.findIndex(address => {
+      if(address.addressComponents.length === 6 ||
+        address.addressComponents.length === 7) {
+        return (address.addressComponents[5].short_name !== 'RU' &&
+          address.addressComponents[4].short_name !== 'RU')
+      } else {
+        return true;
+      }
+    })
+    return index === -1;
+  };
+
+  setAddressNames = (addresses) => {
+    const allInRussia = this.areAllBuildingsInRussia(addresses);
+    this.setState((prevState) => ({
+      addresses: prevState.addresses.map(address => {
+        if(allInRussia) {
+          address.addressName = address.formattedAddress.split(', ').slice(0,-2).join(', ');
+          return address;
+        } else {
+          address.addressName = address.formattedAddress;
+          return address;
+        }
+      })
+    }))
+  } 
 
   isUniqueAddress = (placeId) => {
     if(this.state.addresses.length > 0) {
@@ -91,6 +119,8 @@ class App extends React.Component {
           errorMessage: ''
         }
       ));
+      console.log(this.areAllBuildingsInRussia(this.state.addresses));
+      this.setAddressNames(this.state.addresses);
       this.setPathCoords();
     } else {
       this.handleError('Эта точка уже есть в маршруте')
@@ -103,10 +133,10 @@ class App extends React.Component {
   };
 
   deleteAddress = (placeId) => {
-    console.log('hello')
     this.setState(prevState => ({
       addresses: prevState.addresses.filter(address => address.placeId !== placeId)
     }));
+    this.setAddressNames(this.state.addresses);
     this.setPathCoords();
   };
 
@@ -115,9 +145,10 @@ class App extends React.Component {
     let newAddress = {};
     geoCodeLocation(newLatLng)
       .then(results => {
-        newAddress.address = results[0].formatted_address;
+        newAddress.formattedAddress = results[0].formatted_address;
         newAddress.placeId = results[0].place_id;
-        return getLatLng(results[0])
+        newAddress.addressComponents = results[0].address_components;
+        return getLatLng(results[0]);
       })
       .then(latLng => {
         newAddress.latLng = latLng;
@@ -131,6 +162,7 @@ class App extends React.Component {
           
         });
         this.setState(() => ({ addresses: newAddresses }));
+        this.setAddressNames(this.state.addresses);
         this.setPathCoords();
       })
       .catch(error => {

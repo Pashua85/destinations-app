@@ -28,8 +28,15 @@ export default class AddAddress extends React.Component {
     let newAddress = {};
     geocodeByAddress(address)
       .then(results => {
-        newAddress.address = results[0].formatted_address;
+        newAddress.formattedAddress = results[0].formatted_address;
         newAddress.placeId = results[0].place_id;
+
+        if(results[0].address_components) {
+          newAddress.addressComponents = results[0].address_components; 
+        } else {
+          newAddress.addressComponents = [];
+        };
+        console.log(results[0]);
         return getLatLng(results[0]);
       })
       .then(latLng => {

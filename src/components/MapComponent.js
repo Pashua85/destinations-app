@@ -90,7 +90,7 @@ class Map extends React.Component {
             onClick={this.handleCloseInfoBox}
             position={this.state.selectAddress.latLng}
           >
-            <p>{this.state.selectAddress.address}</p>
+            <p>{this.state.selectAddress.formattedAddress}</p>
           </InfoWindow>
         }
       </GoogleMap>

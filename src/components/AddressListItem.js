@@ -2,7 +2,7 @@ import React from 'react';
 
 const AddressListItem = (props) => (
   <div>
-    {props.item.address}
+    {props.item.addressName}
     <button className='remove-btn'>Удалить</button>
   </div>
 )
