@@ -71,7 +71,7 @@ export default class AddAddress extends React.Component {
           onEnterKeyDown={this.handleSelect}
           onError={this.onError}
         />
-        <button type="submit">Добавить</button>
+        <button type="submit">Add</button>
       </form>
     )
   }
