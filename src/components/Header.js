@@ -1,7 +1,11 @@
 import React from 'react';
 
 const Header = () => (
-  <h1>Destinations app</h1>
+  <header className="page-header">
+    <div className="container">
+      <h1 className="page-header__title">Destinations app</h1>
+    </div>
+  </header>
 );
 
 export default Header;

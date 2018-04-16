@@ -101,8 +101,13 @@ class Map extends React.Component {
 const MyMapComponent = compose(
   withProps({
     loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `400px` }} />,
+    containerElement: <div style={{ 
+                        height: `400px`,
+                        border: `1px solid green`,
+                        width: `66%`
+                      }} />,
     mapElement: <div style={{ height: `100%` }} />,
+    className: 'map-here'
   }),
   withGoogleMap
 )(Map);

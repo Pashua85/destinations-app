@@ -61,17 +61,28 @@ export default class AddAddress extends React.Component {
     const inputProps = {
       value: this.state.address,
       onChange: this.handleChange
+    };
+
+    const cssClasses = {
+      root: 'add-address__root',
+      input: 'add-address__input',
+      autocompleteContainer: 'add-address__autocomplete-container'
     }
 
     return (
-      <form onSubmit={this.handleFormSubmit} id="add-address-form">
+      <form 
+        onSubmit={this.handleFormSubmit} 
+        id="add-address-form"
+        className="add-address-form"
+      >
         <PlacesAutocomplete 
           inputProps={inputProps} 
           onSelect={this.handleSelect}
           onEnterKeyDown={this.handleSelect}
           onError={this.onError}
+          classNames={cssClasses}
         />
-        <button type="submit">Add</button>
+        <button type="submit" className="add-address__btn">Add</button>
       </form>
     )
   }

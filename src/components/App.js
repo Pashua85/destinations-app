@@ -6,7 +6,6 @@ import ErrorMessage from './ErrorMessage';
 import Header from './Header';
 import MapComponent from './MapComponent';
 
-
 function geoCodeLocation(latLng) {
   // return a Promise
   return new Promise(function(resolve,reject) {
@@ -172,9 +171,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="app-container">
         <Header />
-        <div className="container">
+        <div className="main-container container">
           <div className="widget">
             <AddAddress 
               addAddress={this.addAddress}

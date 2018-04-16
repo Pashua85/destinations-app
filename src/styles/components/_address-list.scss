@@ -1,0 +1,17 @@
+.address-list__item {
+  border: 1px solid $off-grey;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  padding: $xs-size;
+  margin-bottom: $xs-size;
+}
+
+.address-list__title {
+
+}
+
+.address-list__btn {
+  height: $m-size;
+  align-self: center;
+}

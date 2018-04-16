@@ -1,9 +1,11 @@
 import React from 'react';
 
 const AddressListItem = (props) => (
-  <div>
-    {props.item.addressName}
-    <button className='remove-btn'>Delete</button>
+  <div className="address-list__item">
+    <div className="address-list__title">
+      {props.item.addressName}
+    </div>
+    <button className='address-list__btn remove-btn'>Delete</button>
   </div>
 )
 

@@ -1,0 +1,9 @@
+.page-header {
+  background-color: $dark-green;
+  margin-bottom: $s-size;
+  &__title {
+    margin: 0;
+    color: $off-white;
+    padding: $m-size 0;
+  }
+}

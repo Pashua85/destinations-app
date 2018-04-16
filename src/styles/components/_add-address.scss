@@ -1,0 +1,29 @@
+.add-address-form {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: $m-size;
+}
+
+.add-address__btn {
+  height: 40px;
+  width: 19%;
+}
+
+.add-address__root {
+  width: 80%;
+  height: 40px;
+  position: relative;
+}
+
+.add-address__input {
+  width: 90%;
+  padding: 9px;
+}
+
+.add-address__autocomplete-container {
+  position: absolute;
+  top: 100%;
+  backgroundColor: white;
+  border: 1px solid #555555;
+  width: 100%;
+}
