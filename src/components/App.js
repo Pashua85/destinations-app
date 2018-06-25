@@ -7,15 +7,12 @@ import Header from './Header';
 import MapComponent from './MapComponent';
 
 function geoCodeLocation(latLng) {
-  // return a Promise
   return new Promise(function(resolve,reject) {
     var geocoder = new window.google.maps.Geocoder;
     geocoder.geocode( { 'location': latLng}, function(results, status) {
       if (status === 'OK') {
-        // resolve results upon a successful status
         resolve(results);
       } else {
-        // reject status upon un-successful status
         reject(status);
       }
     });
@@ -24,7 +21,24 @@ function geoCodeLocation(latLng) {
 
 class App extends React.Component {
   state = {
-    addresses: [],
+    addresses: [
+      {
+         formattedAddress: 'ул. Щорса, 94А, Екатеринбург, Свердловская обл., Россия, 620144',
+         latLng: {
+           lat: 56.80950300000001,
+           lng: 60.606506999999965
+         },
+         placeId: "ChIJc8sXNttuwUMRWSTSqEBCxrY"
+      },
+      {
+         formattedAddress: 'ул. Чайковского, 62, Екатеринбург, Свердловская обл., Россия, 620130',
+         latLng: {
+           lat: 56.8073729,
+           lng: 60.62031009999998
+         },
+         placeId: 'ChIJASguT89uwUMRMbx0H8V2uNk'
+      },
+    ],
     errorMessage: '',
     pathCoords: []
   };
@@ -37,35 +51,7 @@ class App extends React.Component {
     this.setState((prevState) => ({
       pathCoords: prevState.addresses.map(address => address.latLng)
     }))
-  };
-
-  areAllBuildingsInRussia = (addresses) => {
-    const index = addresses.findIndex(address => {
-      if(address.addressComponents.length === 6 ||
-        address.addressComponents.length === 7) {
-        return (address.addressComponents[5].short_name !== 'RU' &&
-          address.addressComponents[4].short_name !== 'RU')
-      } else {
-        return true;
-      }
-    })
-    return index === -1;
-  };
-
-  setAddressNames = (addresses) => {
-    const allInRussia = this.areAllBuildingsInRussia(addresses);
-    this.setState((prevState) => ({
-      addresses: prevState.addresses.map(address => {
-        if(allInRussia) {
-          address.addressName = address.formattedAddress.split(', ').slice(0,-2).join(', ');
-          return address;
-        } else {
-          address.addressName = address.formattedAddress;
-          return address;
-        }
-      })
-    }))
-  } 
+  }; 
 
   isUniqueAddress = (placeId) => {
     if(this.state.addresses.length > 0) {
@@ -85,8 +71,6 @@ class App extends React.Component {
           errorMessage: ''
         }
       ));
-      console.log(this.areAllBuildingsInRussia(this.state.addresses));
-      this.setAddressNames(this.state.addresses);
       this.setPathCoords();
     } else {
       this.handleError('Эта точка уже есть в маршруте')
@@ -102,7 +86,6 @@ class App extends React.Component {
     this.setState(prevState => ({
       addresses: prevState.addresses.filter(address => address.placeId !== placeId)
     }));
-    this.setAddressNames(this.state.addresses);
     this.setPathCoords();
   };
 
@@ -128,7 +111,6 @@ class App extends React.Component {
           
         });
         this.setState(() => ({ addresses: newAddresses }));
-        this.setAddressNames(this.state.addresses);
         this.setPathCoords();
       })
       .catch(error => {

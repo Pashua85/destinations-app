@@ -18,8 +18,6 @@ class Map extends React.Component {
   };
 
   componentDidUpdate() {
-    console.log(this.state.pathCoords);
-    console.log(this.props.addresses);
     if(this.props.addresses.length > 1) {
       const bounds = new window.google.maps.LatLngBounds();
       this.props.addresses.map((address, i) => {

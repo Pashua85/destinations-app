@@ -25,11 +25,12 @@ export default class AddressList extends React.Component {
       <Reorder
         itemKey='placeId'
         lock='horizontal'
-        holdTime='250'
+        holdTime='100'
         list={this.props.addresses}
         template={AddressListItem}
         callback={this.onReorder}
         itemClicked={this.itemClicked}
+        itemClass={'list-item'}
       />
     )
   }

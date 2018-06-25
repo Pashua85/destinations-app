@@ -5,10 +5,24 @@
   justify-content: space-between;
   padding: $xs-size;
   margin-bottom: $xs-size;
+  user-select: none;
+
+  &:hover {
+    border: 1px solid $off-black;
+    transition: border 0.2s;
+  }
 }
 
-.address-list__title {
+.list-item {
 
+  &.placeholder {
+    visibility: hidden;
+  }
+
+  &.dragged {
+    transform: scale(1.02, 1.02);
+    background: rgba(255, 255, 255, 0.7);
+  }
 }
 
 .address-list__btn {

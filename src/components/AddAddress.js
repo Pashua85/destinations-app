@@ -36,7 +36,6 @@ export default class AddAddress extends React.Component {
         } else {
           newAddress.addressComponents = [];
         };
-        console.log(results[0]);
         return getLatLng(results[0]);
       })
       .then(latLng => {
