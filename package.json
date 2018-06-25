@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "Pavel Lashuk",
-  "license": "MIT",
   "scripts": {
     "build:dev": "webpack",
     "build:prod": "webpack -p --env production",
