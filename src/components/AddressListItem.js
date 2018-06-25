@@ -7,7 +7,7 @@ const AddressListItem = (props) => (
     </div>
     <button className='address-list__btn remove-btn'>Delete</button>
   </div>
-)
+);
 
 export default AddressListItem;
 

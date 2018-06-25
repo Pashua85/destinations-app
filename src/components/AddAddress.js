@@ -18,7 +18,7 @@ export default class AddAddress extends React.Component {
     if(this.state.address) {
       this.handleSelect(this.state.address)
     } else {
-      this.props.handleError('Введите название точки маршрута');
+      this.props.handleError('Please add an address');
     }
   };
 

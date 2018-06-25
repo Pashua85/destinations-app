@@ -56,7 +56,7 @@ class App extends React.Component {
       ));
       this.setPathCoords();
     } else {
-      this.handleError('Эта точка уже есть в маршруте')
+      this.handleError('This address is already in the route')
     }
   };
 

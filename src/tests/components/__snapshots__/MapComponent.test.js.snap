@@ -68,5 +68,25 @@ exports[`should render MapComponent correctly 1`] = `
       }
     />
   }
+  pathCoords={
+    Array [
+      Object {
+        "lat": 56.80950300000001,
+        "lng": 60.606506999999965,
+      },
+      Object {
+        "lat": 56.8073729,
+        "lng": 60.62031009999998,
+      },
+      Object {
+        "lat": 56.854948,
+        "lng": 60.661017000000015,
+      },
+      Object {
+        "lat": 55.755826,
+        "lng": 37.617299900000035,
+      },
+    ]
+  }
 />
 `;

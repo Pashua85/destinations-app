@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render App 1`] = `
+<div
+  className="app-container"
+>
+  <Header />
+  <div
+    className="main-container container"
+  >
+    <div
+      className="widget"
+    >
+      <AddAddress
+        addAddress={[Function]}
+        handleError={[Function]}
+      />
+      <ErrorMessage
+        errorMessage=""
+      />
+      <AddressList
+        addresses={Array []}
+        deleteAddress={[Function]}
+        handleReorder={[Function]}
+      />
+    </div>
+    <withProps(withGoogleMap(Map))
+      addresses={Array []}
+      isMarkerShown={true}
+      onChangePosition={[Function]}
+      pathCoords={Array []}
+    />
+  </div>
+</div>
+`;
+
+exports[`should set error message and render it correctly 1`] = `
+<div
+  className="app-container"
+>
+  <Header />
+  <div
+    className="main-container container"
+  >
+    <div
+      className="widget"
+    >
+      <AddAddress
+        addAddress={[Function]}
+        handleError={[Function]}
+      />
+      <ErrorMessage
+        errorMessage=""
+      />
+      <AddressList
+        addresses={Array []}
+        deleteAddress={[Function]}
+        handleReorder={[Function]}
+      />
+    </div>
+    <withProps(withGoogleMap(Map))
+      addresses={Array []}
+      isMarkerShown={true}
+      onChangePosition={[Function]}
+      pathCoords={Array []}
+    />
+  </div>
+</div>
+`;
