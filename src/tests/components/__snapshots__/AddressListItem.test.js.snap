@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render AddressListItem with fixture data 1`] = `
+<div
+  className="address-list__item"
+>
+  <div
+    className="address-list__title"
+  >
+    ул. Щорса, 94А, Екатеринбург, Свердловская обл., Россия, 620144
+  </div>
+  <button
+    className="address-list__btn remove-btn"
+  >
+    Delete
+  </button>
+</div>
+`;

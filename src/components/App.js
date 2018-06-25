@@ -21,24 +21,7 @@ function geoCodeLocation(latLng) {
 
 class App extends React.Component {
   state = {
-    addresses: [
-      {
-         formattedAddress: 'ул. Щорса, 94А, Екатеринбург, Свердловская обл., Россия, 620144',
-         latLng: {
-           lat: 56.80950300000001,
-           lng: 60.606506999999965
-         },
-         placeId: "ChIJc8sXNttuwUMRWSTSqEBCxrY"
-      },
-      {
-         formattedAddress: 'ул. Чайковского, 62, Екатеринбург, Свердловская обл., Россия, 620130',
-         latLng: {
-           lat: 56.8073729,
-           lng: 60.62031009999998
-         },
-         placeId: 'ChIJASguT89uwUMRMbx0H8V2uNk'
-      },
-    ],
+    addresses: [],
     errorMessage: '',
     pathCoords: []
   };

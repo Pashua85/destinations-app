@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render MapComponent correctly 1`] = `
+<withGoogleMap(Map)
+  addresses={
+    Array [
+      Object {
+        "formattedAddress": "ул. Щорса, 94А, Екатеринбург, Свердловская обл., Россия, 620144",
+        "latLng": Object {
+          "lat": 56.80950300000001,
+          "lng": 60.606506999999965,
+        },
+        "placeId": "ChIJc8sXNttuwUMRWSTSqEBCxrY",
+      },
+      Object {
+        "formattedAddress": "ул. Чайковского, 62, Екатеринбург, Свердловская обл., Россия, 620130",
+        "latLng": Object {
+          "lat": 56.8073729,
+          "lng": 60.62031009999998,
+        },
+        "placeId": "ChIJASguT89uwUMRMbx0H8V2uNk",
+      },
+      Object {
+        "formattedAddress": "ул. Студенческая, 3, Екатеринбург, Свердловская обл., Россия, 620137",
+        "latLng": Object {
+          "lat": 56.854948,
+          "lng": 60.661017000000015,
+        },
+        "placeId": "ChIJ6TiVJjVswUMRRi8Evo28BM4",
+      },
+      Object {
+        "formattedAddress": "Москва, Россия",
+        "latLng": Object {
+          "lat": 55.755826,
+          "lng": 37.617299900000035,
+        },
+        "placeId": "\\"ChIJybDUc_xKtUYRTM9XV8zWRD0\\"",
+      },
+    ]
+  }
+  className="map-here"
+  containerElement={
+    <div
+      style={
+        Object {
+          "border": "1px solid green",
+          "height": "400px",
+          "width": "66%",
+        }
+      }
+    />
+  }
+  loadingElement={
+    <div
+      style={
+        Object {
+          "height": "100%",
+        }
+      }
+    />
+  }
+  mapElement={
+    <div
+      style={
+        Object {
+          "height": "100%",
+        }
+      }
+    />
+  }
+/>
+`;

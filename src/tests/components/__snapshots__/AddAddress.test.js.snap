@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render AddAddress correctly 1`] = `
+<form
+  className="add-address-form"
+  id="add-address-form"
+  onSubmit={[Function]}
+>
+  <PlacesAutocomplete
+    classNames={
+      Object {
+        "autocompleteContainer": "add-address__autocomplete-container",
+        "input": "add-address__input",
+        "root": "add-address__root",
+      }
+    }
+    debounce={200}
+    highlightFirstSuggestion={false}
+    inputProps={
+      Object {
+        "onChange": [Function],
+        "value": "",
+      }
+    }
+    onEnterKeyDown={[Function]}
+    onError={[Function]}
+    onSelect={[Function]}
+    options={Object {}}
+    renderSuggestion={[Function]}
+    shouldFetchSuggestions={[Function]}
+    styles={Object {}}
+  />
+  <button
+    className="add-address__btn"
+    type="submit"
+  >
+    Add
+  </button>
+</form>
+`;
