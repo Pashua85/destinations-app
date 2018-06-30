@@ -19,6 +19,9 @@
 .add-address__input {
   width: 90%;
   padding: 9px;
+  border: 1px solid $off-grey;
+  height: 20px;
+  border-radius: 3px;
 }
 
 .add-address__autocomplete-container {

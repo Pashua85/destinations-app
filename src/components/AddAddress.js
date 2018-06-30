@@ -59,7 +59,8 @@ export default class AddAddress extends React.Component {
   render() {
     const inputProps = {
       value: this.state.address,
-      onChange: this.handleChange
+      onChange: this.handleChange,
+      placeholder: 'search places...'
     };
 
     const cssClasses = {
